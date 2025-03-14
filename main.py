@@ -1,13 +1,14 @@
 from pathlib import Path
 from datetime import datetime
+import random
 
 class Report:
-    def __init__(self, total_sales, products_sold, estimated_profits, best_selling, number_customers):
-        self.total_sales = total_sales
-        self.products_sold = products_sold
-        self.estimated_profits = estimated_profits
-        self.best_selling = best_selling
-        self.number_customers = number_customers
+    def __init__(self):
+        self.total_sales = random.randint(1000, 10000)
+        self.products_sold = random.randint(50, 200)
+        self.estimated_profits = round(self.total_sales * 0.3, 2)          
+        self.best_selling = random.choice(["Tomato", "cucumber", "rice", "fries", "shampoo", "beer", "Coke"])
+        self.number_customers = random.randint(20,100)
 
     @staticmethod
     def ensure_reports_exists():
@@ -22,7 +23,9 @@ class Report:
         name = (f"report_{now}.txt")
         return name
     
+
     
+
 hola = Report(1,23, 43, 432, 4322)
 print(hola.ensure_reports_exists())
 
