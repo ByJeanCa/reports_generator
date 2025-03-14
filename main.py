@@ -15,6 +15,13 @@ class Report:
         reports_dir.mkdir(parents=True, exist_ok=True)
         return reports_dir
     
+    def generate_unique_name(self):
+        #informe_2023-10-15_14-30-00.txt
+        now = datetime.now()
+        now = now.strftime("%Y-%m-%d_%H-%M-%S")
+        name = (f"report_{now}.txt")
+        return name
+    
     
 hola = Report(1,23, 43, 432, 4322)
 print(hola.ensure_reports_exists())
