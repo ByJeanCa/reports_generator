@@ -8,7 +8,7 @@ class Report:
         self.products_sold = random.randint(50, 200)
         self.estimated_profits = round(self.total_sales * 0.3, 2)          
         self.best_selling = random.choice(["Tomato", "cucumber", "rice", "fries", "shampoo", "beer", "Coke"])
-        self.number_customers = random.randint(20,100)
+        self.customers_served = random.randint(20,100)
 
     @staticmethod
     def ensure_reports_exists():
@@ -21,13 +21,24 @@ class Report:
         now = datetime.now()
         now = now.strftime("%Y-%m-%d_%H-%M-%S")
         name = (f"report_{now}.txt")
-        return name
+        return name, now
+    
+    def format_report_content(self):
+        name, now = self.generate_unique_name()
+        content = f""" Sales report gerated on {now}
+        Summary: Total sales: ${self.total_sales}
+            - Number of products sold: {self.products_sold}
+            - Estimated earnings: ${self.estimated_profits}
+            - Number of clients served: {self.customers_served}"""
+        
+        return content
     
 
     
 
-hola = Report(1,23, 43, 432, 4322)
+hola = Report()
 print(hola.ensure_reports_exists())
+print(hola.format_report_content())
 
 
 
