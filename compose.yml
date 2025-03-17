@@ -1,0 +1,13 @@
+version: '3.8'
+
+services:
+  report-app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - reports:/app/reports
+volumes:
+  reports:
+
+
