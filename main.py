@@ -31,14 +31,24 @@ class Report:
             - Estimated earnings: ${self.estimated_profits}
             - Number of clients served: {self.customers_served}"""
         
-        return content
+        return name,content
+    
+    def save_report(self):
+        reports_dir = self.ensure_reports_exists()
+        name, content = self.format_report_content()
+
+        reports_dir = (f"{reports_dir}/{name}")
+
+        with open (reports_dir, 'w', encoding='utf-8') as report_file:
+            report_file.write(content)
+
     
 
     
 
 hola = Report()
-print(hola.ensure_reports_exists())
-print(hola.format_report_content())
+
+hola.save_report()
 
 
 
